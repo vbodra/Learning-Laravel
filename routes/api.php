@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PracticesController;
-use App\Http\Controllers\PracticingRelatedTablesController;
+use App\Http\Controllers\CarBrandsController;
+use App\Http\Controllers\CarModelsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/practices', [PracticesController::class, 'store']);
-Route::get('/practices', [PracticesController::class, 'index']);
-Route::get('/practices/{id}', [PracticesController::class, 'getById']);
-Route::delete('/practices/{id}', [PracticesController::class, 'destroy']);
-Route::put('/practices/{id}', [PracticesController::class, 'updateById']);
+Route::post('/carbrands', [CarBrandsController::class, 'store']);
+Route::get('/carbrands', [CarBrandsController::class, 'index']);
+Route::get('/carbrands/{id}', [CarBrandsController::class, 'getById']);
+Route::delete('/carbrands/{id}', [CarBrandsController::class, 'destroy']);
+Route::put('/carbrands/{id}', [CarBrandsController::class, 'updateById']);
 
-Route::post('/relatedTables', [PracticingRelatedTablesController::class, 'store']);
-Route::get('/relatedTables', [PracticingRelatedTablesController::class, 'index']);
+Route::post('/carmodels', [CarModels::class, 'store']);
+Route::get('/carmodels', [CarModels::class, 'index']);

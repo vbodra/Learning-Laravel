@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Practices;
 
-class PracticingRelatedTables extends Model
+class CarModels extends Model
 {
     use HasFactory;
 
@@ -20,6 +20,6 @@ class PracticingRelatedTables extends Model
 
     public function practices()
     {
-        return $this->belongsTo(Practices::class);
+        return $this->belongsTo(CarBrands::class);
     }
 }

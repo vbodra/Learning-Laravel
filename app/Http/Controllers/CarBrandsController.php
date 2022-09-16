@@ -3,32 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Practices;
+use App\Models\CarBrands;
 
-class PracticesController extends Controller
+class CarBrandsController extends Controller
 {
     public function store(Request $request)
     {
-        $result = Practices::create([
+        $result = CarBrands::create([
             'brand_name' => $request->input('brand_name'),
-        ]);
+        ])->toJson();
 
         print_r($result);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        echo Practices::all();
+        $includeSoftDeletes = $request->query('withTrashed');
+
+        echo($includeSoftDeletes == 'true' ?
+            CarBrands::withTrashed()->get() : CarBrands::all());
     }
 
     public function getById($id)
     {
-        echo Practices::findOrFail($id);
+        echo CarBrands::findOrFail($id);
     }
 
     public function destroy($id)
     {
-        echo Practices::where('id', $id)->delete();
+        echo CarBrands::where('id', $id)->delete();
     }
 
     public function updateById(Request $request, $id)
@@ -37,13 +40,13 @@ class PracticesController extends Controller
         // the lines above and below seem to do the same thing
         // $input = $request->input('brand_name'); 
 
-        $foundBrand = Practices::find($id);
+        $foundBrand = CarBrands::find($id);
         $foundBrand->brand_name = $input;
         $foundBrand->save();
 
         // the line below can be used to update a single or multiple fields
-        // $response = Practices::where('id', $id)->update(['brand_name' => $input]);
+        // $response = CarBrands::where('id', $id)->update(['brand_name' => $input]);
         
-        print_r($foundBrand);
+        print_r($foundBrand->toJson());
     }
 }

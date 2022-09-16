@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\PracticingRelatedTables;
+use App\Models\CarModels;
 
-class PracticingRelatedTablesController extends Controller
+class CarModelsController extends Controller
 {
     public function store(Request $request)
     {
         $input = $request['model'];
 
-        $response = PracticingRelatedTables::create([
+        $response = CarModels::create([
             'model' => $input,
             'car_brand_id' => $request['car_brand_id']
-        ]);
+        ])->toJson();
 
         print_r($response);
     }
@@ -27,6 +27,7 @@ class PracticingRelatedTablesController extends Controller
             ->get()
             ->toJson();
         print_r($response);
-        // print_r(PracticingRelatedTables::with('practices')->get()[2]['car_brand_id']);
+        
+        // print_r(CarModels::with('practices')->get()[2]['car_brand_id']);
     }
 }
