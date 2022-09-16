@@ -22,8 +22,8 @@ class CarModelsController extends Controller
 
     public function index()
     {
-        $response = DB::table('practices')
-            ->join('practicing_related_tables', 'practices.id', '=', 'practicing_related_tables.car_brand_id')
+        $response = DB::table('car_brands')
+            ->join('car_models', 'car_brands.id', '=', 'car_models.car_brand_id')
             ->get()
             ->toJson();
         print_r($response);

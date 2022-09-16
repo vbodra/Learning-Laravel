@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\PracticingRelatedTables;
+use App\Models\CarModels;
 
 class CarBrands extends Model
 {
@@ -25,6 +25,6 @@ class CarBrands extends Model
 
     public function practicing_related_tables()
     {
-        return $this->hasMany(PracticingRelatedTables::class);
+        return $this->hasMany(CarModels::class);
     }
 }

@@ -26,5 +26,5 @@ Route::get('/carbrands/{id}', [CarBrandsController::class, 'getById']);
 Route::delete('/carbrands/{id}', [CarBrandsController::class, 'destroy']);
 Route::put('/carbrands/{id}', [CarBrandsController::class, 'updateById']);
 
-Route::post('/carmodels', [CarModels::class, 'store']);
-Route::get('/carmodels', [CarModels::class, 'index']);
+Route::post('/carmodels', [CarModelsController::class, 'store']);
+Route::get('/carmodels', [CarModelsController::class, 'index']);
