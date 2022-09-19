@@ -22,12 +22,10 @@ class CarModelsController extends Controller
 
     public function index()
     {
-        $response = DB::table('car_brands')
-            ->join('car_models', 'car_brands.id', '=', 'car_models.car_brand_id')
-            ->get()
-            ->toJson();
+        $response = CarModels::whereHas('CarBrand', function ($query) {
+            $query->where('car_brand_id', 3);
+        })->get()->toJson();
+
         print_r($response);
-        
-        // print_r(CarModels::with('practices')->get()[2]['car_brand_id']);
     }
 }
